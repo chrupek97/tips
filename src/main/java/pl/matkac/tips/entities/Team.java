@@ -21,7 +21,12 @@ public class Team {
     private Long id;
 
     private String name;
-    private LeagueEnum league;
+
+    @ManyToMany
+    @JoinTable(name = "team_league",
+            joinColumns = { @JoinColumn(name = "team_id") },
+            inverseJoinColumns = { @JoinColumn(name = "league_id") })
+    private Set<League> leagues;
 
     @OneToMany(mappedBy = "homeTeam")
     private Set<Match> matchesHome;

@@ -1,6 +1,6 @@
 package pl.matkac.tips.entities;
 
-import com.fasterxml.jackson.annotation.JsonView;
+import com.sun.istack.NotNull;
 import pl.matkac.tips.entities.enums.LeagueEnum;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -23,10 +23,12 @@ public class League implements Serializable {
     private Long id;
 
     @Enumerated(EnumType.STRING)
+    @NotNull
     private LeagueEnum name;
-    private int maxUsers;
-    private int currentUsers;
 
-    @ManyToMany(mappedBy = "leagues")
+    @ManyToMany
+    @JoinTable(name = "user_league",
+            joinColumns = { @JoinColumn(name = "user_id") },
+            inverseJoinColumns = { @JoinColumn(name = "league_id") })
     private Set<User> users;
 }
