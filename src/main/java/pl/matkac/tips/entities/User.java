@@ -19,10 +19,18 @@ public class User {
 
     private String login;
     private String password;
-    private String name;
-    private String surname;
+    private String firstname;
+    private String lastname;
     private String eMail;
 
     @Enumerated(EnumType.STRING)
     private RoleEnum role;
+
+    @OneToMany
+    @JoinColumn(name="user_id")
+    private Set<Tips> tipsSet;
+
+    @OneToMany
+    @JoinColumn(name="user_id")
+    private Set<UserCustomLeague> userCustomLeagueSet;
 }

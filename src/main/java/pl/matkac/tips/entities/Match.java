@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 @NoArgsConstructor
@@ -30,6 +31,10 @@ public class Match {
     private LocalDateTime date;
     private int homeTeamGoals;
     private int awayTeamGoals;
+
+    @OneToMany
+    @JoinColumn(name="match_id")
+    private Set<Tips> tipsSet;
 
     @Enumerated(EnumType.STRING)
     private ResultEnum result;

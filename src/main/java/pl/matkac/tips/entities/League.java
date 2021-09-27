@@ -26,9 +26,9 @@ public class League implements Serializable {
     @NotNull
     private LeagueEnum name;
 
-    @ManyToMany
-    @JoinTable(name = "user_league",
-            joinColumns = { @JoinColumn(name = "user_id") },
-            inverseJoinColumns = { @JoinColumn(name = "league_id") })
-    private Set<User> users;
+    private String country;
+
+    @OneToMany
+    @JoinColumn(name="league_id")
+    private Set<CustomLeague> customLeagueSet;
 }

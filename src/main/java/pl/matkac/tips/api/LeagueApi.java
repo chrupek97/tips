@@ -59,7 +59,6 @@ public class LeagueApi {
                 .orElseThrow(() -> new ElementNotFoundException("Not found league with id: "+ id));
 
         league.setName(leagueDetails.getName());
-        league.setUsers(leagueDetails.getUsers());
 
         return leagueRepo.save(league);
     }
