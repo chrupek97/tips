@@ -62,5 +62,4 @@ public class LeagueApi {
 
         return leagueRepo.save(league);
     }
-
 }
